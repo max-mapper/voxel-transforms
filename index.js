@@ -1,6 +1,6 @@
 module.exports = {
   overlay: function(val) {
-    return function(x, y, z, n, game) {
+    return function(x, y, z, game) {
       var above = [x, y + 1, z]
       if (game.getBlock(x, y, z) !== 0 && 
           game.getBlock(above) === 0) game.setBlock(above, val)
