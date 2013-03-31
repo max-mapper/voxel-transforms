@@ -14,6 +14,20 @@ module.exports = {
           game.getBlock(above) === 0) buffer.push(above)
     }
   },
+  replace: function(to, from) {
+    return function(x, y, z, game) {
+      var block = game.getBlock(x, y, z)
+      if (block === 0) {
+        if (typeof from === 'undefined') return
+        if (from !== 0) return
+      } else {
+        if (typeof from !== 'undefined') {
+          if (from !== block) return
+        }
+      }
+      game.setBlock([x, y, z], to)
+    }
+  },
   move: function(game, low, high, shift, copyAir) {
     var buffer = []
     var minX = low[0]
